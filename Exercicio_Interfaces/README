@@ -1,0 +1,14 @@
+O objetivo deste exercício é criar um sistema para uma locadora de veículos que calcula o valor final de uma fatura com base no tempo de uso e na aplicação de impostos.
+Regras de Negócio
+1. Cálculo do Pagamento Básico (Locação):
+A cobrança é definida pela duração entre o momento da retirada e o momento do retorno:
+Até 12 horas: O valor é calculado com base no preço por hora. Frações de hora são arredondadas para cima (ex: 3 horas e 10 minutos são cobrados como 4 horas).
+Acima de 12 horas: O valor é calculado com base no preço por dia. Frações de dia também são arredondadas para cima (ex: 25 horas são cobradas como 2 dias).
+2. Cálculo do Imposto:
+Após definir o pagamento básico, incide o imposto brasileiro:
+Valor básico até R$ 100,00: O imposto é de 20%.
+Valor básico acima de R$ 100,00: O imposto é de 15%.
+Requisitos Técnicos
+Leitura de Dados: O programa deve ler o modelo do carro, data/hora inicial, data/hora final, preço por hora e preço por dia.
+Saída: Deve exibir o Pagamento Básico, o Valor do Imposto e o Pagamento Total (Soma do básico + imposto).
+Arquitetura: O projeto utiliza Interfaces para o serviço de imposto, permitindo que a lógica de tributação seja facilmente alterada sem modificar o serviço principal de locação
