@@ -1,5 +1,7 @@
 import models.entities.Contract;
+import models.entities.Installment;
 import models.interfaces.OnlinePaymentService;
+import models.services.ContractService;
 import models.services.PayPalService;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -18,9 +20,18 @@ void main() {
     double contractValue = sc.nextDouble();
 
     Contract contract = new Contract(numberContract, dateContract, contractValue);
-    OnlinePaymentService service = new PayPalService();
     IO.println("Entre com o número de parcelas: ");
     int installmentQuantity = sc.nextInt();
+
+    ContractService contractService = new ContractService(new PayPalService());
+
+    contractService.processContract(contract, installmentQuantity);
+
+    IO.println("PARCELAS: ");
+
+    for (Installment installment : contract.getInstallments()){
+        IO.println(installment);
+    }
 
 
 
